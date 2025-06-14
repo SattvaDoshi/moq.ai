@@ -1,71 +1,49 @@
 "use client";
-import { UserDetailContext } from '@/conext/UserDetailContext';
-import { supabase } from '@/services/SupabaseClient';
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, useContext, use } from "react";
+import { supabase } from "@/services/supabaseClient";
+import { UserDetailContext } from "@/context/UserDetailContext";
 
 const Provider = ({ children }) => {
-  const [user, setUser] = useState();
-
+  const [user, setUser] = useState(null);
   useEffect(() => {
-    const createNewUser = async () => {
-      const {
-        data: { user: currentUser },
-        error: userError,
-      } = await supabase.auth.getUser();
-
-      if (userError || !currentUser) {
-        console.error("Failed to get user:", userError?.message);
-        return;
-      }
-
-
-      const { data: users, error: selectError } = await supabase
-        .from("users")
-        .select("*")
-        .eq("email", currentUser.email);
-
-      if (selectError) {
-        console.error("Error selecting user:", selectError.message);
-        return;
-      }
-
-      if (!users || users.length === 0) {
-        const { data: insertData, error: insertError } = await supabase
-          .from("users")
-          .insert([
-            {
-              email: currentUser.user_metadata?.email,
-              name: currentUser.user_metadata?.name,
-              profile: currentUser.user_metadata?.picture,
-            },
-          ]);
-
-        if (insertError) {
-          console.error("Error inserting user:", insertError.message);
-        } else {
-          console.log("New user created:", insertData);
-        }
-      }
-      setUser(users[0])
-    };
-
-    createNewUser();
+    CreateNewUser();
   }, []);
+
+  const CreateNewUser = () => {
+    supabase.auth.getUser().then(async ({ data: { user } }) => {
+      // Check if user exists in the database
+      let { data: Users, error } = await supabase
+        .from("Users")
+        .select("*")
+        .eq("email", user?.email);
+
+      // If user does not exist, create a new user
+      if (Users?.length === 0) {
+        const { data, error } = await supabase.from("Users").insert([
+          {
+            name: user?.user_metadata.full_name,
+            email: user?.email,
+            picture: user?.user_metadata.picture,
+          },
+        ]);
+        console.log("User created: ", data);
+        setUser(data);
+        return;
+      }
+      setUser(Users[0]);
+    });
+  };
 
   return (
     <UserDetailContext.Provider value={{ user, setUser }}>
-      {children}
+      <div>{children}</div>
     </UserDetailContext.Provider>
   );
 };
 
 export default Provider;
 
-// Custom hook to use user context
 export const useUser = () => {
-  const context = React.useContext(UserDetailContext);
-  if (context === undefined) {
-    throw new Error("useUser must be used within a UserDetailProvider");
-  }
+  const context = useContext(UserDetailContext);
   return context;
 };

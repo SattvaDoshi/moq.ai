@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Provider from "./provider"; // ✅ This is your Client Component
+import Provider from "./provider";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,17 +14,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "AI Interview",
-  description: "AI personalized Interview",
+  title: "AI Interview Scheduler & Conductor | Smart Hiring Solution",
+  description:
+    "Automate hiring with AI: schedule interviews, conduct assessments, and deliver feedback. Streamline recruitment and hire faster with our AI interview platform.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-sidebar`}>
-        {/* ✅ FIXED: Properly closed <Provider> */}
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <Provider>
           {children}
+          <Toaster />
         </Provider>
       </body>
     </html>

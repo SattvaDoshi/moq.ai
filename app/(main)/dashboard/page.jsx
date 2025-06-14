@@ -1,16 +1,17 @@
-import React from 'react'
-import WelcomeContainer from './_component/WelcomeContainer'
-import CreateOption from './_component/CreateOption'
-import LatestInterviews from './_component/LatestInterviews'
+import React from "react";
+import WelcomeContainer from "./_components/WelcomeContainer";
+import CreateOptions from "./_components/CreateOptions";
+import LatestInterviewList from "./_components/LatestInterviewList";
 
-const DashBoard = () => {
+const Dashboard = () => {
   return (
     <div>
-      <WelcomeContainer/>
-      <CreateOption/>
-      <LatestInterviews/>
+      {/* <WelcomeContainer /> */}
+      <h2 className="my-3 font-bold text-2xl">Dashboard</h2>
+      <CreateOptions />
+      <LatestInterviewList />
     </div>
-  )
-}
+  );
+};
 
-export default DashBoard
+export default Dashboard;

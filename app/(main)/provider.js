@@ -1,20 +1,23 @@
-'use client'
-import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
-import React from 'react'
-import { AppSidebar } from './_components/SideBar'
-import { useUser } from '../provider'
+import React from "react";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "./_components/AppSideBar";
+import WelcomeContainer from "./dashboard/_components/WelcomeContainer";
 
-const DashBoardProvider = ({ children }) => {
- 
+const DashboardProvider = ({ children }) => {
   return (
     <SidebarProvider>
-      <AppSidebar/>
-        <div>
-          <SidebarTrigger/>
-          {children}
+      <AppSidebar />
+      <div className="w-full">
+        <div className="md:hidden p-4">
+          <SidebarTrigger />
         </div>
-      </SidebarProvider>
-  )
-}
+        <div className="mt-10 mx-10">
+          <WelcomeContainer />
+        </div>
+        {children}
+      </div>
+    </SidebarProvider>
+  );
+};
 
-export default DashBoardProvider
+export default DashboardProvider;
