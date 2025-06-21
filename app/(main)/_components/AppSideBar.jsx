@@ -12,8 +12,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
 import { SideBarOptions } from "@/services/Constants";
 
 export function AppSidebar() {

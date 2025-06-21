@@ -5,7 +5,7 @@ import moment from "moment";
 const InterviewDetailContainer = ({ interviewDetail }) => {
   console.log(interviewDetail?.questionList, "question List");
   return (
-    <div className="p-5 bg-white rounded-lg mt-5">
+    <div className="p-5 rounded-lg mt-5">
       <h2>{interviewDetail?.JobPosition}</h2>
 
       <div className="mt-4 flex justify-between">

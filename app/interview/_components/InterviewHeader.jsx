@@ -3,14 +3,15 @@ import React from "react";
 
 const InterviewHeader = () => {
   return (
-    <div className="p-4 shadow-md">
+    <div className="flex items-center gap-3">
       <Image
-        src={"/logo.png"}
+        src={"/logo.svg"}
         alt="logo"
-        width={200}
-        height={100}
-        className="w-[140px]"
+        width={50}
+        height={50}
+        className="w-[50px]"
       />
+      <h1 className="text-2xl font-bold">Moq.AI</h1>
     </div>
   );
 };

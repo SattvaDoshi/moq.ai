@@ -30,10 +30,12 @@ const ScheduledInterview = () => {
         Interview List with Candidate Feedback
       </h2>
       {interviewList?.length === 0 ? (
-        <div className="p-5 flex flex-col items-center gap-3 mt-5 bg-white rounded-xl shadow-md">
-          <CameraIcon className="h-10 w-10 text-primary" />
-          <h2>You don't have any interview created!</h2>
-          <Button>Create New Interview</Button>
+        <div className="p-6 mt-6 flex flex-col items-center gap-4 bg-[#1F1F2B] border border-[#2A2A3B] rounded-xl shadow-md">
+          <CameraIcon className="h-10 w-10 text-purple-500 bg-purple-900/20 p-2 rounded-lg" />
+          <h2 className="text-gray-300">You haven't created any interviews yet.</h2>
+          <Button variant="default" className="bg-primary hover:bg-purple-700 text-white">
+            Create New Interview
+          </Button>
         </div>
       ) : (
         <div className="grid grid-cols-2 xl:grid-cols-3 gap-5 mt-5">
