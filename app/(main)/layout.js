@@ -1,14 +1,19 @@
-import React from "react";
-import DashboardProvider from "./provider";
+import React from 'react'
+import Dashboardprovider from './provider'
 
-const DashboardLayout = ({ children }) => {
+function DashboardLayout({ children }) {
   return (
-    <div className=" ">
-      <DashboardProvider>
-        <div className="p-10 ">{children}</div>
-      </DashboardProvider>
-    </div>
-  );
-};
+    <div>
+        <Dashboardprovider>
+            <div className='p-10'>
 
-export default DashboardLayout;
+
+            
+        {children}
+            </div>
+        </Dashboardprovider>
+    </div>
+  )
+}
+
+export default DashboardLayout

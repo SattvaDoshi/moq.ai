@@ -1,18 +1,18 @@
-"use client";
-import React, { useState } from "react";
-import InterviewHeader from "./_components/InterviewHeader";
-import { InterviewDataContext } from "@/context/InterviewDataContext";
+"use client"
+import React, { useState } from 'react'
+import InterviewHeader from './_components/InterviewHeader'
+import { InterviewDataContext } from '@/context/InterViewDataContext'
 
-const InterviewLayout = ({ children }) => {
-  const [interviewInfo, setInterviewInfo] = useState(null);
+function layout({ children }) {
+  const [interviewInfo, setInterviewInfo] = useState();
   return (
     <InterviewDataContext.Provider value={{ interviewInfo, setInterviewInfo }}>
-      <div className="bg-secondary min-h-screen">
-        <InterviewHeader />
+    <div>
+        <InterviewHeader/>
         {children}
       </div>
     </InterviewDataContext.Provider>
-  );
-};
+  )
+}
 
-export default InterviewLayout;
+export default layout

@@ -1,165 +1,111 @@
-import {
-  Calendar,
-  LayoutDashboard,
-  List,
-  Settings,
-  WalletCards,
-} from "lucide-react";
+import { BriefcaseBusinessIcon, Calendar, Code2Icon, Hammer, HammerIcon, LayoutDashboard, Puzzle, Settings, TableOfContents, User2Icon, WalletCards } from "lucide-react";
 
-import {
-  Code2Icon,
-  User2Icon,
-  BriefcaseBusiness,
-  Puzzle,
-  ShieldCheckIcon, // Added for Leadership
-} from "lucide-react"; // Adjust if you're using a different icon library
-
-export const SideBarOptions = [
-  {
-    name: "Dashboard",
-    icon: LayoutDashboard,
-    path: "/dashboard",
-  },
-  {
-    name: "Schedule Interview",
-    icon: Calendar,
-    path: "/scheduled-interview",
-  },
-  {
-    name: "All Interview",
-    icon: List,
-    path: "/all-interview",
-  },
-  {
-    name: "Billing",
-    icon: WalletCards,
-    path: "/billing",
-  },
-  {
-    name: "settings",
-    icon: Settings,
-    path: "/settings",
-  },
-];
-
-export const InterviewType = [
-  {
-    title: "Technical",
-    icon: Code2Icon,
-  },
-  {
-    title: "Behavioral",
-    icon: User2Icon,
-  },
-  {
-    title: "Experience",
-    icon: BriefcaseBusiness,
-  },
-  {
-    title: "Problem Solving",
-    icon: Puzzle,
-  },
-  {
-    title: "Leadership",
-    icon: ShieldCheckIcon,
-  },
-];
-
-export const QUESTIONS_PROMPT = `You are an expert technical interviewer.
-
-🎯 Your task: Generate a list of high-quality interview questions based **only** on the selected interview type(s), job details, and candidate experience.
-
----
-
-📄 Inputs:
-- **Job Title**: {{jobTitle}}  
-- **Job Description**: {{jobDescription}}  
-- **Interview Duration**: {{duration}} minutes  
-- **Interview Type(s)**: {{interviewType}}  
-- **Candidate Experience Level**: {{experience}}  
-
----
-
-📌 Rules & Constraints:
-1. 🚫 **Do NOT include questions from unselected interview types.** Only include questions that strictly belong to the selected interview type(s): {{interviewType}}.
-2. 🎯 For each selected interview type, ensure every question matches its category:
-   - **Technical**: Focus on coding, technologies, system design, tools, and technical depth.
-   - **Behavioral**: Soft skills, team communication, conflict resolution, decision-making.
-   - **Problem Solving**: Analytical thinking, logical reasoning, debugging.
-   - **Experience**: Past project exposure, responsibilities, decision outcomes.
-   - **Leadership**: Team leadership, architecture decisions, strategic thinking — include only if experience is 5+ years or role includes leadership.
-3. 🎚️ Adjust difficulty based on experience:
-   - **Fresher**: Basic concepts, learning potential.
-   - **1–2 Years**: Hands-on exposure, practical application.
-   - **3–5 Years**: System thinking, scalability, tradeoffs.
-   - **5+ Years**: Ownership, leadership, architecture.
-
----
-
-📦 Output Format:
-Return **only** a JSON object using the format below, and include the original job context in the object as well:
-
-\`\`\`json
-{
-  "interviewQuestions": [
+export const SideBarOptions =[
     {
-      "question": "Your question here",
-      "type": "Technical" | "Behavioral" | "Experience" | "Problem Solving" | "Leadership"
-    }
-  ],
-  "jobTitle": "{{jobTitle}}",
-  "jobDescription": "{{jobDescription}}",
-  "interviewDuration": "{{duration}}",
-  "interviewType": "{{interviewType}}",
-  "experienceLevel": "{{experience}}"
-}
-\`\`\`
+        name: 'Dashboard',
+        icon: LayoutDashboard,
+        
+        path: '/dashboard',
+    },
+    {
+        name: 'Scheduled Interviews',
+        icon: Calendar,
+        
+        path: '/scheduled-interviews',
+    },
+    {
 
-⚠️ Make sure:
-- All questions strictly align with the selected interview type(s).
-- Do not generate unrelated or mixed-type questions.
-- Do not include generic or vague questions.
+        name: 'All Interview',
+        icon: TableOfContents,
+        path: '/all-interview',
+    },
+    {
+        name: 'Billing',
+        icon: WalletCards,
+        
+        path: '/billing',
+    },
+    {
+        name: 'Settings',
+        icon: Settings,
+        
+        path: '/settings',
+    },
+    
 
-`;
+]
 
-export const FEEDBACK_PROMPT = `{{conversation}}
+export const InterviewType =[
+    {
+        title:'Technical',
+        icon:Code2Icon
+    },
+    {
+        title:'Behavioral',
+        icon:User2Icon
+    },
+    {
+        title:'Experience',
+        icon:BriefcaseBusinessIcon
+    },
+    {
+        title:'Problem ssolving',
+        icon:Puzzle
+    },
+    {
+        title:'Leadership',
+        icon:Code2Icon
+    },
 
-Depends on this Interview Conversation between assitant and user, 
 
-Give me feedback for user interview. Give me rating out of 10 for technical Skills, 
+]
+export const QUESTION_PROMPT = `You are an expert technical interviewer.
 
-Communication, Problem Solving, Experince. Also give me summery in 3 lines 
+Based on the following inputs, generate a well-structured list of high-quality interview questions:
 
-about the interview and one line to let me know whether is recommanded 
+Job Title: {jobPosition}  
+Job Description: {jobDescription} 
+Interview Duration: {duration} 
+Interview Type: {type}
 
-for hire or not with msg. Give me response in JSON format
+📝 Your task:
+- Carefully analyze the job description to identify key responsibilities, required skills, and expected experience.
+- Generate a list of interview questions appropriate for the interview duration.
+- Adjust the number and depth of questions to fit within the given time frame.
+- Ensure the tone, content, and structure match a real-life {type} interview.
 
+🧩 Format your response strictly in JSON format as an array of question objects:
+Format:
+interviewQuestions = [
+  {
+    question: "Your question here",
+    type: "Technical | Behavioral | Experience | Problem Solving | Leadership"
+  },
+  ...
+]
+
+NOTE : Make sure that you follow the duration and type of the interview. 
+It should stay in the {duration} minutes and be a {type} interview.
+
+🎯 The goal is to create a structured, relevant, and time-optimized interview plan tailored to the {{jobTitle}} role.`;
+
+
+
+export const FEEDBACK_PROMPT=`{{conversation}}
+Depends on this Interview Conversation between assistant and user,
+Give me feedback for user interview. Give me rating out of 10 for technical Skills, Communication, Problem Solving, Experience. Also give me summery in 3 lines about the interview and one line to let me know whether is recommanded for hire or not with msg. Give me response in JSON format
 {
-
-    feedback:{
-
-        rating:{
-
-            techicalSkills:5,
-
-            communication:6,
-
-            problemSolving:4,
-
-            experince:7
-
-        },
-
-        summery:<in 3 Line>,
-
-        Recommendation:'',
-
-        RecommendationMsg:''
-
-
-
-    }
-
+  feedback: {
+    rating: {
+      techicalSkills: 7,
+      communication: 6,
+      problemSolving: 5,
+      experince: 4
+    },
+    summery: <in 3 Line>,
+    Recommendation: "",
+    RecommendationMsg: ""
+  }
 }
 
-`;
+`

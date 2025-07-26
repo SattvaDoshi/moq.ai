@@ -1,19 +1,12 @@
-import Image from "next/image";
-import React from "react";
+import Image from 'next/image'
+import React from 'react'
 
-const InterviewHeader = () => {
+function InterviewHeader() {
   return (
-    <div className="flex items-center gap-3">
-      <Image
-        src={"/logo.svg"}
-        alt="logo"
-        width={50}
-        height={50}
-        className="w-[50px]"
-      />
-      <h1 className="text-2xl font-bold">Moq.AI</h1>
+    <div className='p-4 shadow-md'>
+        <Image src={'/logo.svg'} alt='logo' width={200} height={100} className='w-[140px] '/>
     </div>
-  );
-};
+  )
+}
 
-export default InterviewHeader;
+export default InterviewHeader

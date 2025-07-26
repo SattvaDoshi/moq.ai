@@ -1,17 +1,17 @@
-import React from "react";
-import WelcomeContainer from "./_components/WelcomeContainer";
-import CreateOptions from "./_components/CreateOptions";
-import LatestInterviewList from "./_components/LatestInterviewList";
+import React from 'react'
+import Welcome from './_components/Welcome'
+import CreateOption from './_components/CreateOption'
+import LatestInterViewList from './_components/LatestInterViewList'
 
-const Dashboard = () => {
+function Dashboard() {
   return (
     <div>
-      {/* <WelcomeContainer /> */}
-      <h2 className="my-3 font-bold text-2xl">Dashboard</h2>
-      <CreateOptions />
-      <LatestInterviewList />
+        
+        <h2 className='text-2xl font-bold my-3'>Dashboard</h2>
+        <CreateOption/>
+        <LatestInterViewList/>
     </div>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard

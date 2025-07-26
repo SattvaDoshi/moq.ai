@@ -1,23 +1,20 @@
-import React from "react";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "./_components/AppSideBar";
-import WelcomeContainer from "./dashboard/_components/WelcomeContainer";
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
+import React from 'react'
+import { AppSidebar } from './dashboard/_component/AppSidebar'
+import Welcome from './dashboard/_components/Welcome'
 
-const DashboardProvider = ({ children }) => {
+
+function Dashboardprovider({children}) {
   return (
     <SidebarProvider>
-      <AppSidebar />
-      <div className="w-full">
-        <div className="md:hidden p-4">
-          <SidebarTrigger />
-        </div>
-        <div className="mt-10 mx-10">
-          <WelcomeContainer />
-        </div>
-        {children}
-      </div>
+        <AppSidebar />
+    <div className='w-full'>
+        <SidebarTrigger/>
+    <Welcome />
+      {children}
+    </div>
     </SidebarProvider>
-  );
-};
+  )
+}
 
-export default DashboardProvider;
+export default Dashboardprovider
