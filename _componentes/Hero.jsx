@@ -5,18 +5,20 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { ChevronRight, Check, Star, Users, BarChart3, Zap, Menu, X } from 'lucide-react';
+import { ChevronRight, Check, Star, Users, BarChart3, Zap, Menu, X, Brain, FileText, Calendar, Mic } from 'lucide-react';
+import Header from './Header'; // Import your header
 
 export default function IntegratedApp() {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-900 via-gray-900 to-black relative overflow-hidden">
       {/* Modern animated background shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-100 rounded-full mix-blend-multiply opacity-70 animate-blob"></div>
-        <div className="absolute top-0 -left-20 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply opacity-70 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-40 w-72 h-72 bg-pink-100 rounded-full mix-blend-multiply opacity-70 animate-blob animation-delay-4000"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full mix-blend-multiply opacity-70 animate-blob blur-xl"></div>
+        <div className="absolute top-0 -left-20 w-72 h-72 bg-green-500/10 rounded-full mix-blend-multiply opacity-70 animate-blob animation-delay-2000 blur-xl"></div>
+        <div className="absolute -bottom-8 left-40 w-72 h-72 bg-purple-500/10 rounded-full mix-blend-multiply opacity-70 animate-blob animation-delay-4000 blur-xl"></div>
       </div>
       
+      <Header />
       <HeroSection />
       <Features />
       <Testimonials />
@@ -40,12 +42,12 @@ function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center py-28" id="hero">
       {/* Background with modern gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-violet-50 to-sky-50 z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black z-0"></div>
       
       {/* Animated circles */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-purple-200/30 mix-blend-multiply filter blur-xl animate-pulse"></div>
-        <div className="absolute bottom-1/3 left-1/3 w-96 h-96 rounded-full bg-blue-200/20 mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
+        <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-blue-500/20 mix-blend-multiply filter blur-xl animate-pulse"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-96 h-96 rounded-full bg-green-500/10 mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
@@ -53,17 +55,18 @@ function HeroSection() {
           {/* Hero content */}
           <div className="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
             {/* Badge with glass effect */}
-            <div className="inline-flex mb-6 rounded-full px-3 py-1 text-sm font-medium backdrop-blur-sm bg-white/70 border border-white/20 shadow-sm text-indigo-800">
-              ✨ New AI Features Available Now
+            <div className="inline-flex mb-6 rounded-full px-4 py-2 text-sm font-medium backdrop-blur-sm bg-white/5 border border-white/10 shadow-sm text-blue-300">
+              ✨ AI-Powered Interview Preparation Platform
             </div>
             
             <h1 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700">Revolutionize</span>
-              <br /> Your Hiring Process
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-green-400 to-purple-600">Master</span>
+              <br />
+              <span className="text-white">Your Interviews</span>
             </h1>
             
-            <p className="text-xl text-gray-700 mb-8 max-w-lg font-light">
-              Intelligent candidate matching, automated screening, and data-driven insights to transform your recruitment workflow.
+            <p className="text-xl text-gray-300 mb-8 max-w-lg font-light">
+              AI-powered mock interviews, personalized study plans, and intelligent resume analysis to land your dream job.
             </p>
             
             {/* Modern form with glass effect */}
@@ -71,24 +74,24 @@ function HeroSection() {
               <Input
                 type="email"
                 required
-                placeholder="Enter your work email"
+                placeholder="Enter your email to get started"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 bg-white/70 backdrop-blur-sm border-white/20 focus:border-indigo-500 rounded-lg shadow-sm"
+                className="flex-1 bg-white/5 backdrop-blur-sm border-white/20 focus:border-blue-500 rounded-lg shadow-sm text-white placeholder:text-gray-400"
               />
               <Button 
                 type="submit" 
-                className="bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white shadow-md transition-all duration-300 rounded-lg" 
+                className="bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white shadow-lg transition-all duration-300 rounded-lg" 
                 size="lg"
               >
-                Start Free Trial <ChevronRight size={16} className="ml-1" />
+                Start Practicing <ChevronRight size={16} className="ml-1" />
               </Button>
             </form>
             
             {isSubmitted && (
               <AnimatePresence>
                 <motion.div
-                  className="mt-4 text-green-600 flex items-center justify-center md:justify-start"
+                  className="mt-4 text-green-400 flex items-center justify-center md:justify-start"
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
@@ -101,23 +104,23 @@ function HeroSection() {
             
             {/* Trust indicators */}
             <div className="mt-8 flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-3 text-sm">
-              <div className="flex items-center text-gray-600">
-                <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center mr-2">
-                  <Check size={12} className="text-green-600" />
+              <div className="flex items-center text-gray-400">
+                <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center mr-2">
+                  <Check size={12} className="text-green-400" />
                 </div>
-                No credit card required
+                Free practice interviews
               </div>
-              <div className="flex items-center text-gray-600">
-                <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center mr-2">
-                  <Check size={12} className="text-green-600" />
+              <div className="flex items-center text-gray-400">
+                <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center mr-2">
+                  <Check size={12} className="text-green-400" />
                 </div>
-                3 free interviews included
+                Personalized feedback
               </div>
-              <div className="flex items-center text-gray-600">
-                <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center mr-2">
-                  <Check size={12} className="text-green-600" />
+              <div className="flex items-center text-gray-400">
+                <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center mr-2">
+                  <Check size={12} className="text-green-400" />
                 </div>
-                5-minute setup
+                Resume optimization
               </div>
             </div>
           </div>
@@ -131,34 +134,53 @@ function HeroSection() {
               transition={{ duration: 0.7, delay: 0.3 }}
             >
               {/* Glass card effect */}
-              <div className="absolute -top-6 -left-6 right-6 bottom-6 rounded-xl bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-xl border border-white/30 shadow-xl z-0"></div>
+              <div className="absolute -top-6 -left-6 right-6 bottom-6 rounded-xl bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-xl border border-white/10 shadow-2xl z-0"></div>
               
               {/* Mock dashboard image */}
-              <div className="relative z-10 rounded-lg overflow-hidden shadow-2xl border border-white/20">
-                <img 
-                  src="/hero.jpg" 
-                  alt="AI Recruitment Dashboard" 
-                  className="w-full h-auto"
-                />
+              <div className="relative z-10 rounded-lg overflow-hidden shadow-2xl border border-white/20 bg-gray-800/50 backdrop-blur-sm">
+                <div className="p-6 bg-gradient-to-br from-gray-800 to-gray-900">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-white font-semibold">InterviewAce Dashboard</h3>
+                    <div className="flex space-x-1">
+                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="bg-blue-500/20 rounded p-3 flex items-center justify-between">
+                      <span className="text-gray-300">Mock Interviews Completed</span>
+                      <span className="text-blue-400 font-bold">47</span>
+                    </div>
+                    <div className="bg-green-500/20 rounded p-3 flex items-center justify-between">
+                      <span className="text-gray-300">Study Goals This Week</span>
+                      <span className="text-green-400 font-bold">5/7</span>
+                    </div>
+                    <div className="bg-purple-500/20 rounded p-3 flex items-center justify-between">
+                      <span className="text-gray-300">Resume Score</span>
+                      <span className="text-purple-400 font-bold">92%</span>
+                    </div>
+                  </div>
+                </div>
               </div>
               
               {/* Floating badge */}
-              <div className="absolute top-4 right-0 transform translate-x-1/3 bg-white rounded-lg shadow-lg p-3 z-20">
+              <div className="absolute top-4 right-0 transform translate-x-1/3 bg-gray-800/90 backdrop-blur-sm border border-white/20 rounded-lg shadow-lg p-3 z-20">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                    <Users size={14} className="text-white" />
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-green-600 flex items-center justify-center">
+                    <Mic size={14} className="text-white" />
                   </div>
                   <div>
-                    <div className="text-xs text-gray-500">Matched</div>
-                    <div className="text-sm font-medium">94 Candidates</div>
+                    <div className="text-xs text-gray-400">Next Interview</div>
+                    <div className="text-sm font-medium text-white">Frontend Dev</div>
                   </div>
                 </div>
               </div>
               
               {/* Floating status */}
-              <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-white rounded-full shadow-lg px-4 py-2 z-20 flex items-center gap-2">
-                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-sm font-medium">AI Matching Active</span>
+              <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-gray-800/90 backdrop-blur-sm border border-white/20 rounded-full shadow-lg px-4 py-2 z-20 flex items-center gap-2">
+                <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium text-white">AI Coach Ready</span>
               </div>
             </motion.div>
           </div>
@@ -171,48 +193,48 @@ function HeroSection() {
 function Features() {
   const features = [
     { 
-      icon: <Users size={24} />, 
+      icon: <Mic size={24} />, 
       color: "from-blue-500 to-indigo-600",
-      title: 'AI Matching', 
-      desc: 'Proprietary algorithm finds top candidates in seconds, matching skills and culture fit with 95% accuracy.' 
+      title: 'AI Mock Interviews', 
+      desc: 'Practice with AI-powered interviews based on job descriptions or your resume. Get real-time feedback and improve your performance.' 
     },
     { 
-      icon: <Zap size={24} />, 
-      color: "from-violet-500 to-purple-600",
-      title: 'Automated Screening', 
-      desc: 'Reduce manual screening time by 80% with intelligent resume parsing and smart candidate filtering.' 
+      icon: <Calendar size={24} />, 
+      color: "from-green-500 to-teal-600",
+      title: 'Personalized Study Planner', 
+      desc: 'AI creates custom study schedules based on your target role, current skills, and available time to maximize your preparation.' 
     },
     { 
-      icon: <BarChart3 size={24} />, 
-      color: "from-pink-500 to-rose-600",
-      title: 'Analytics Dashboard', 
-      desc: 'Data-driven insights to optimize your hiring process, track KPIs, and forecast hiring needs.' 
+      icon: <FileText size={24} />, 
+      color: "from-purple-500 to-pink-600",
+      title: 'Resume Analyzer', 
+      desc: 'Advanced AI analyzes your resume, suggests improvements, and optimizes it for ATS systems and specific job requirements.' 
     }
   ];
   
   return (
-    <section id="features" className="py-28 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <section id="features" className="py-28 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute right-0 top-0 h-96 w-96 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-full mix-blend-multiply opacity-50 blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-        <div className="absolute left-0 bottom-0 h-96 w-96 bg-gradient-to-tr from-blue-50 to-sky-50 rounded-full mix-blend-multiply opacity-50 blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+        <div className="absolute right-0 top-0 h-96 w-96 bg-gradient-to-br from-blue-500/10 to-green-500/10 rounded-full mix-blend-multiply opacity-50 blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        <div className="absolute left-0 bottom-0 h-96 w-96 bg-gradient-to-tr from-purple-500/10 to-pink-500/10 rounded-full mix-blend-multiply opacity-50 blur-3xl translate-y-1/2 -translate-x-1/2"></div>
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           {/* Badge with glass effect */}
-          <div className="inline-flex items-center mb-6 rounded-full px-3 py-1 text-sm font-medium backdrop-blur-sm bg-white/70 shadow-sm border border-indigo-100/30 text-indigo-800">
-            <span className="bg-indigo-100 rounded-full w-5 h-5 flex items-center justify-center mr-2">
-              <Zap size={12} className="text-indigo-600" />
+          <div className="inline-flex items-center mb-6 rounded-full px-4 py-2 text-sm font-medium backdrop-blur-sm bg-white/5 shadow-sm border border-blue-500/20 text-blue-300">
+            <span className="bg-blue-500/20 rounded-full w-5 h-5 flex items-center justify-center mr-2">
+              <Brain size={12} className="text-blue-400" />
             </span>
-            Innovative Features
+            Complete Interview Preparation
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold mb-5 bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 to-violet-700">
-            Powerful AI-Driven Tools
+          <h2 className="text-4xl md:text-5xl font-bold mb-5 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
+            Everything You Need to Ace Interviews
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            Our intelligent platform streamlines your recruitment process from end to end, saving time and improving candidate quality.
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            From practice interviews to resume optimization, our AI-powered platform prepares you for every aspect of the job search process.
           </p>
         </div>
         
@@ -228,24 +250,24 @@ function Features() {
             >
               <div className="relative h-full group">
                 {/* Glass card effect */}
-                <div className="absolute inset-0 bg-white/40 backdrop-blur-lg rounded-2xl border border-white/20 shadow-xl transition-all duration-300 group-hover:shadow-2xl group-hover:border-white/40"></div>
+                <div className="absolute inset-0 bg-white/5 backdrop-blur-lg rounded-2xl border border-white/10 shadow-xl transition-all duration-300 group-hover:shadow-2xl group-hover:border-blue-500/30 group-hover:bg-white/10"></div>
                 
                 <div className="relative p-8 h-full flex flex-col">
                   <div className={`h-16 w-16 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center text-white mb-6 shadow-lg`}>
                     {feature.icon}
                   </div>
                   
-                  <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
-                  <p className="text-gray-600 mb-6 flex-grow">{feature.desc}</p>
+                  <h3 className="text-2xl font-bold mb-4 text-white">{feature.title}</h3>
+                  <p className="text-gray-400 mb-6 flex-grow">{feature.desc}</p>
                   
                   <div className="mt-auto">
                     <Button 
                       variant="ghost" 
-                      className="text-indigo-600 hover:text-indigo-800 hover:bg-indigo-50 p-0 flex items-center group"
+                      className="text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 p-0 flex items-center group"
                     >
-                      <span>Learn more</span>
-                      <div className="ml-2 w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center transition-all duration-300 group-hover:bg-indigo-200">
-                        <ChevronRight size={14} className="text-indigo-600" />
+                      <span>Try it now</span>
+                      <div className="ml-2 w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center transition-all duration-300 group-hover:bg-blue-500/30">
+                        <ChevronRight size={14} className="text-blue-400" />
                       </div>
                     </Button>
                   </div>
@@ -262,10 +284,10 @@ function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-white/80 to-white/30 backdrop-blur-md p-8 rounded-2xl border border-white/20 text-center shadow-lg"
+            className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-2xl border border-white/10 text-center shadow-lg"
           >
-            <h3 className="text-5xl font-bold text-gray-900 mb-2">95%</h3>
-            <p className="text-gray-600">Matching accuracy</p>
+            <h3 className="text-5xl font-bold text-white mb-2">89%</h3>
+            <p className="text-gray-400">Success rate improvement</p>
           </motion.div>
           
           <motion.div
@@ -273,10 +295,10 @@ function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.1 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-white/80 to-white/30 backdrop-blur-md p-8 rounded-2xl border border-white/20 text-center shadow-lg"
+            className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-2xl border border-white/10 text-center shadow-lg"
           >
-            <h3 className="text-5xl font-bold text-gray-900 mb-2">80%</h3>
-            <p className="text-gray-600">Time saved in screening</p>
+            <h3 className="text-5xl font-bold text-white mb-2">10k+</h3>
+            <p className="text-gray-400">Mock interviews completed</p>
           </motion.div>
           
           <motion.div
@@ -284,10 +306,10 @@ function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.2 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-white/80 to-white/30 backdrop-blur-md p-8 rounded-2xl border border-white/20 text-center shadow-lg"
+            className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-2xl border border-white/10 text-center shadow-lg"
           >
-            <h3 className="text-5xl font-bold text-gray-900 mb-2">2x</h3>
-            <p className="text-gray-600">Improvement in hire quality</p>
+            <h3 className="text-5xl font-bold text-white mb-2">4.9/5</h3>
+            <p className="text-gray-400">Average user rating</p>
           </motion.div>
         </div>
       </div>
@@ -298,35 +320,39 @@ function Features() {
 function Testimonials() {
   const reviews = [
     { 
-      name: 'Jane Doe', 
-      position: 'HR Director, TechCorp',
-      text: 'AIRecruit cut our time-to-hire by 70% and improved our quality of hires dramatically. The AI matching algorithm is incredibly accurate.',
-      avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
+      name: 'Alex Kumar', 
+      position: 'Software Engineer at Google',
+      text: 'InterviewAce helped me land my dream job at Google! The AI mock interviews were incredibly realistic and the feedback was spot-on.',
+      avatar: 'https://randomuser.me/api/portraits/men/44.jpg',
       rating: 5
     },
     { 
-      name: 'John Smith', 
-      position: 'Talent Acquisition Lead, InnovateCo',
-      text: 'The automated screening has been a game-changer for our team. We can now focus on engaging with top candidates instead of sifting through resumes.',
-      avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
+      name: 'Maria Rodriguez', 
+      position: 'Product Manager at Microsoft',
+      text: 'The study planner feature is amazing. It created a perfect 3-week preparation schedule that got me ready for my PM interviews.',
+      avatar: 'https://randomuser.me/api/portraits/women/32.jpg',
       rating: 5
     },
     { 
-      name: 'Sarah Johnson', 
-      position: 'CEO, StartupX',
-      text: 'As a fast-growing startup, we needed a solution that could scale with us. AIRecruit has been the perfect partner in our growth journey.',
-      avatar: 'https://randomuser.me/api/portraits/women/68.jpg',
-      rating: 4
+      name: 'David Chen', 
+      position: 'Data Scientist at Netflix',
+      text: 'The resume analyzer increased my response rate by 300%. Now I understand exactly what recruiters are looking for.',
+      avatar: 'https://randomuser.me/api/portraits/men/68.jpg',
+      rating: 5
     }
   ];
   
   return (
-    <section id="testimonials" className="py-24 bg-gradient-to-b from-white to-gray-50">
+    <section id="testimonials" className="py-24 bg-gradient-to-b from-black to-gray-900">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <Badge className="mb-3 text-sm py-1 px-3 bg-indigo-100 text-indigo-800 hover:bg-indigo-200">Testimonials</Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Trusted by Industry Leaders</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">See how companies are transforming their recruitment process with AIRecruit.</p>
+          <Badge className="mb-4 bg-green-500/20 text-green-300 hover:bg-green-500/30 border-green-500/30">
+            Success Stories
+          </Badge>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">Join Thousands Who Landed Their Dream Jobs</h2>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            Real stories from real people who transformed their interview skills with InterviewAce.
+          </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -338,10 +364,10 @@ function Testimonials() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full border-none shadow-md hover:shadow-xl transition-all duration-300 overflow-visible">
+              <Card className="h-full border-white/10 bg-white/5 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-blue-500/30 overflow-visible">
                 <CardContent className="pt-8 relative">
                   <div className="absolute -top-6 left-6">
-                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md">
+                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-blue-500/30 shadow-md">
                       <img src={review.avatar} alt={review.name} className="w-full h-full object-cover" />
                     </div>
                   </div>
@@ -350,16 +376,13 @@ function Testimonials() {
                     {[...Array(review.rating)].map((_, i) => (
                       <Star key={i} size={16} className="text-yellow-400 fill-yellow-400" />
                     ))}
-                    {[...Array(5 - review.rating)].map((_, i) => (
-                      <Star key={i + review.rating} size={16} className="text-gray-300" />
-                    ))}
                   </div>
                   
-                  <p className="text-gray-700 italic mb-6">"{review.text}"</p>
+                  <p className="text-gray-300 italic mb-6">"{review.text}"</p>
                   
                   <div>
-                    <div className="font-semibold text-gray-900">{review.name}</div>
-                    <div className="text-sm text-gray-500">{review.position}</div>
+                    <div className="font-semibold text-white">{review.name}</div>
+                    <div className="text-sm text-gray-400">{review.position}</div>
                   </div>
                 </CardContent>
               </Card>
@@ -368,8 +391,8 @@ function Testimonials() {
         </div>
         
         <div className="mt-16 text-center">
-          <Button variant="outline" className="border-indigo-200 text-indigo-700 hover:bg-indigo-50">
-            View All Customer Stories <ChevronRight size={16} className="ml-1" />
+          <Button variant="outline" className="border-blue-500/30 text-blue-300 hover:bg-blue-500/10 hover:border-blue-500/50">
+            Read More Success Stories <ChevronRight size={16} className="ml-1" />
           </Button>
         </div>
       </div>
@@ -380,62 +403,75 @@ function Testimonials() {
 function UpgradePlan() {
   const plans = [
     {
-      name: 'Starter',
-      price: 'Free Trial',
-      period: '',
-      description: 'Perfect for small teams and startups',
+      name: 'Free',
+      price: '$0',
+      period: '/month',
+      description: 'Perfect for getting started',
       features: [
-        '3 candidate screenings',
-        'Basic AI matching',
+        '3 AI mock interviews per month',
+        'Basic resume analysis',
+        'Simple study planner',
         'Email support',
-        '1 user account'
+        'Interview question bank access'
       ],
-      buttonText: 'Start Free Trial',
+      buttonText: 'Get Started Free',
       isPrimary: false
     },
     {
       name: 'Pro',
-      price: '$20',
+      price: '$19',
       period: '/month',
-      description: 'Ideal for growing companies',
+      description: 'For serious job seekers',
       features: [
-        '500 candidate screenings/month',
-        'Advanced AI matching',
+        'Unlimited AI mock interviews',
+        'Advanced resume optimization',
+        'Personalized study plans',
+        'Interview feedback & scoring',
+        'Job-specific interview prep',
         'Priority support',
-        '5 user accounts',
-        'Custom workflow integration'
+        'Progress tracking & analytics'
       ],
-      buttonText: 'Start 3 interview trial',
+      buttonText: 'Start 7-Day Free Trial',
       isPrimary: true
     },
     {
-      name: 'Enterprise',
-      price: '$50',
+      name: 'Premium',
+      price: '$39',
       period: '/month',
-      description: 'For large organizations',
+      description: 'For career transformation',
       features: [
-        'Unlimited screenings',
-        'Premium AI matching & analytics',
-        '24/7 dedicated support',
-        'Unlimited users',
-        'Custom integrations',
-        'Dedicated account manager'
+        'Everything in Pro',
+        '1-on-1 career coaching sessions',
+        'LinkedIn profile optimization',
+        'Salary negotiation guidance',
+        'Industry-specific prep modules',
+        'Mock interviews with real experts',
+        'Job application tracking'
       ],
-      buttonText: 'Get Started',
+      buttonText: 'Upgrade to Premium',
       isPrimary: false
     }
   ];
   
   return (
-    <section id="plans" className="py-24 bg-white">
-      <div className="container mx-auto px-6">
+    <section id="plans" className="py-24 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-96 w-96 bg-gradient-to-br from-blue-500/10 to-green-500/10 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <Badge className="mb-3 text-sm py-1 px-3 bg-indigo-100 text-indigo-800 hover:bg-indigo-200">Pricing</Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose the Right Plan</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">Flexible plans designed to fit your recruitment needs, with no hidden fees.</p>
+          <Badge className="mb-4 bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 border-blue-500/30">
+            Pricing Plans
+          </Badge>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">Choose Your Success Plan</h2>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            Start free and upgrade as you advance in your career. No hidden fees, cancel anytime.
+          </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {plans.map((plan) => (
             <motion.div
               key={plan.name}
@@ -445,32 +481,32 @@ function UpgradePlan() {
               viewport={{ once: true }}
               className="flex"
             >
-              <Card className={`flex flex-col h-full w-full overflow-hidden border ${
+              <Card className={`flex flex-col h-full w-full overflow-hidden border backdrop-blur-sm ${
                 plan.isPrimary 
-                  ? 'border-indigo-500 shadow-lg shadow-indigo-100' 
-                  : 'border-gray-200'
+                  ? 'border-blue-500/50 bg-gradient-to-b from-blue-500/10 to-blue-500/5 shadow-xl shadow-blue-500/20' 
+                  : 'border-white/10 bg-white/5'
               }`}>
                 {plan.isPrimary && (
-                  <div className="bg-indigo-500 text-white text-center text-sm py-1">
+                  <div className="bg-gradient-to-r from-blue-500 to-green-500 text-white text-center text-sm py-2 font-medium">
                     Most Popular
                   </div>
                 )}
                 
                 <CardHeader className={`text-center ${plan.isPrimary ? 'pb-0' : ''}`}>
-                  <h3 className="text-xl font-bold">{plan.name}</h3>
-                  <div className="mt-4 text-4xl font-bold">
+                  <h3 className="text-xl font-bold text-white">{plan.name}</h3>
+                  <div className="mt-4 text-4xl font-bold text-white">
                     {plan.price}
-                    {plan.period && <span className="text-sm text-gray-500">{plan.period}</span>}
+                    {plan.period && <span className="text-sm text-gray-400">{plan.period}</span>}
                   </div>
-                  <p className="text-sm text-gray-500 mt-2">{plan.description}</p>
+                  <p className="text-sm text-gray-400 mt-2">{plan.description}</p>
                 </CardHeader>
                 
                 <CardContent className="flex-grow">
                   <ul className="space-y-3">
                     {plan.features.map((feature) => (
                       <li key={feature} className="flex items-center">
-                        <Check size={16} className="text-green-500 mr-2 flex-shrink-0" />
-                        <span className="text-gray-700">{feature}</span>
+                        <Check size={16} className="text-green-400 mr-3 flex-shrink-0" />
+                        <span className="text-gray-300">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -480,8 +516,8 @@ function UpgradePlan() {
                   <Button 
                     className={`w-full ${
                       plan.isPrimary 
-                        ? 'bg-indigo-600 hover:bg-indigo-700 text-white' 
-                        : 'bg-white text-indigo-600 border border-indigo-600 hover:bg-indigo-50'
+                        ? 'bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white shadow-lg' 
+                        : 'bg-white/10 text-white border border-white/20 hover:bg-white/20 backdrop-blur-sm'
                     }`}
                   >
                     {plan.buttonText}
@@ -492,9 +528,9 @@ function UpgradePlan() {
           ))}
         </div>
         
-        <div className="text-center mt-12 text-gray-500 flex items-center justify-center">
-          <Check size={16} className="text-green-500 mr-2" />
-          All plans include 3 interview free trial. No credit card required.
+        <div className="text-center mt-12 text-gray-400 flex items-center justify-center">
+          <Check size={16} className="text-green-400 mr-2" />
+          All plans include 7-day free trial. No credit card required to start.
         </div>
       </div>
     </section>
@@ -503,39 +539,42 @@ function UpgradePlan() {
 
 function Footer() {
   const links = {
-    Product: ['Features', 'Pricing', 'Case Studies', 'Documentation', 'API'],
-    Company: ['About', 'Blog', 'Careers', 'Press', 'Contact'],
-    Legal: ['Privacy', 'Terms', 'Security', 'Accessibility']
+    Product: ['Mock Interviews', 'Study Planner', 'Resume Analyzer', 'Progress Tracking', 'Mobile App'],
+    Resources: ['Interview Tips', 'Career Blog', 'Success Stories', 'Help Center', 'Video Tutorials'],
+    Company: ['About Us', 'Careers', 'Press Kit', 'Contact', 'Partners'],
+    Legal: ['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'GDPR', 'Refund Policy']
   };
   
   return (
-    <footer className="bg-gray-900 text-gray-300 pt-16 pb-8 mt-auto">
+    <footer className="bg-black border-t border-white/10 text-gray-300 pt-16 pb-8 mt-auto">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           <div className="col-span-2">
-            <div className="text-2xl font-bold text-white mb-4">AIRecruit</div>
-            <p className="text-gray-400 mb-4 max-w-xs">
-              Transforming recruitment with AI-powered candidate matching and automated screening solutions.
+            <div className="text-2xl font-bold text-white mb-4 bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">
+              InterviewAce
+            </div>
+            <p className="text-gray-400 mb-6 max-w-xs">
+              Master your interviews with AI-powered practice, personalized study plans, and intelligent resume optimization.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-white transition-colors">
+              <a href="#" className="hover:text-blue-400 transition-colors p-2 rounded-lg hover:bg-white/5">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
                 </svg>
               </a>
-              <a href="#" className="hover:text-white transition-colors">
+              <a href="#" className="hover:text-blue-400 transition-colors p-2 rounded-lg hover:bg-white/5">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
                 </svg>
               </a>
-              <a href="#" className="hover:text-white transition-colors">
+              <a href="#" className="hover:text-blue-400 transition-colors p-2 rounded-lg hover:bg-white/5">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 3.992-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-3.992-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" />
+                  <path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
               </a>
-              <a href="#" className="hover:text-white transition-colors">
+              <a href="#" className="hover:text-blue-400 transition-colors p-2 rounded-lg hover:bg-white/5">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                 </svg>
               </a>
             </div>
@@ -547,7 +586,7 @@ function Footer() {
               <ul className="space-y-2">
                 {items.map((item) => (
                   <li key={item}>
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors">{item}</a>
+                    <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors text-sm">{item}</a>
                   </li>
                 ))}
               </ul>
@@ -555,10 +594,10 @@ function Footer() {
           ))}
         </div>
         
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p>© {new Date().getFullYear()} AIRecruit. All rights reserved.</p>
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-400">© {new Date().getFullYear()} InterviewAce. All rights reserved.</p>
           <p className="mt-4 md:mt-0 text-gray-500 text-sm">
-            Made with ❤️ for more efficient hiring
+            Ace your interviews with AI 🚀
           </p>
         </div>
       </div>
